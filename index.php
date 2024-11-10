@@ -13,9 +13,8 @@
     <div class="w3-content" style="max-width: 1500px">
         <header class="w3-panel w3-center w3-opacity" style="padding: 10px 0; background-color: #d32f2f; color: #fff;">
             <a href="https://t.me/guruusr/">
-                <img src="./logo2.png" style="height: 90px">
-            </a>
-        </header>
+                <img src="./logo2.png" style="height: 90px"</a>
+        
 
         <div class="container">
             <h1 class="page-title">Scripted By Guru Sharma</h1>

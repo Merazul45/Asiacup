@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" href="https://cssjsimg4.procdncache.com/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="./style.css">
-</head>
+	
 <body>
     <div class="w3-content" style="max-width: 1500px">
         <header class="w3-panel w3-center w3-opacity" style="padding: 10px 0; background-color: #d32f2f; color: #fff;">

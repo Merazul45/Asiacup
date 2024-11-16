@@ -1,110 +1,106 @@
 body {
-    font-family: "Montserrat", sans-serif;
-    background-color: black;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-}
+            font-family: "Montserrat", sans-serif;
+            background-color: black;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
 
-.header {
-    background-color: #e50914;
-    padding: 20px;
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: white;
-}
+        .header {
+            background-color: #e50914;
+            padding: 20px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
 
-.search-bar {
-    position: sticky;
-    top: 20px;
-    z-index: 100;
-    background: rgba(30, 30, 30, 0.8);
-    backdrop-filter: blur(15px);
-    border-radius: 50px;
-    padding: 0.5rem 1rem;
-    margin: 1rem auto 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 600px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
+        .search-bar {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            background: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 50px;
+            padding: 0.5rem;
+            margin: 1rem auto 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 600px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
 
-.search-bar input {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    width: 100%;
-    outline: none;
-}
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            width: 100%;
+            outline: none;
+        }
 
-.search-bar button {
-    background: #e50914;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    margin-left: 0.5rem;
-}
+        .search-bar button {
+            background: #e50914;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-left: 0.5rem;
+        }
 
-.search-bar button:hover {
-    background: white;
-    color: #e50914;
-}
+        .search-bar button:hover {
+            background: white;
+            color: #e50914;
+        }
 
-.channel-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px auto;
-}
+        .channel-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px auto;
+        }
 
-.channel {
-    background-color: #202020;
-    color: white;
-    text-align: center;
-    border-radius: 20px 8px;
-    overflow: hidden;
-    padding: 10px;
-    width: 150px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
+        .channel {
+            background-color: #202020;
+            color: white;
+            text-align: center;
+            border-radius: 20px 8px;
+            overflow: hidden;
+            padding: 10px;
+            width: 150px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
 
-.channel img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    margin-bottom: 10px;
-}
+        .channel img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
 
-.channel:hover {
-    background-color: rgba(229, 9, 20, 0.7);
-    border: 2px solid white;
-}
+        .channel:hover {
+            background-color: rgba(165, 42, 42, 0.7);
+            border: 2px solid white;
+        }
 
-.channel-name {
-    font-size: 14px;
-    font-weight: 500;
-    margin-top: 5px;
-}
+        .channel-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
 
-.spinner {
-    text-align: center;
-    margin-top: 50px;
-}
+        .spinner {
+            text-align: center;
+            margin-top: 50px;
+        }
 
-.spinner-border {
-    width: 3rem;
-    height: 3rem;
-    color: #e50914;
-}
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }

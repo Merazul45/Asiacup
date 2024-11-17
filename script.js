@@ -1,8 +1,5 @@
-document.querySelectorAll('nav ul li a').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    document.querySelector(link.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
-  });
+// script.js
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault(); // Prevent form from submitting
+  alert('Thank you for your message!');
 });

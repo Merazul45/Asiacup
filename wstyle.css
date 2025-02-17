@@ -550,8 +550,9 @@ main .hero-wrapper .world-cup-standings table tbody tr td:nth-child(2) {
 .telegram-overlay {
     position: absolute;
        margin: 0vw 0vw;
-    margin-top: 3vw;
-    width: fix;
+    margin-radius: 3vw;
+    gap: 1.2vw;
+    width: 100%;
     height: 40px;
     background-color: #0088cc; /* Telegram Blue */
     display: flex;

@@ -547,6 +547,34 @@ main .hero-wrapper .world-cup-standings table tbody tr td:nth-child(2) {
     font-weight: 600;
 }
 
+.iframe-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 800px;
+}
+
+.telegram-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #0088cc;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease-in-out;
+}
+
+.telegram-button:hover {
+    background-color: #0077b5;
+}
+
+
+
 main .other-match-section {
     margin: 6vw 2vw;
 }

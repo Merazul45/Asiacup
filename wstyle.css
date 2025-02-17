@@ -547,25 +547,21 @@ main .hero-wrapper .world-cup-standings table tbody tr td:nth-child(2) {
     font-weight: 600;
 }
 
-
-.telegram-button {
+.telegram-overlay {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background-color: #0088cc;
-    color: white;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: bold;
+    top: 10px;  /* প্লেয়ারের উপরের দিকে থাকবে */
+    right: 10px; /* ডান পাশে থাকবে */
+    background-color: rgba(0, 0, 0, 0.6); /* ব্যাকগ্রাউন্ড একটু ট্রান্সপারেন্ট */
+    padding: 10px;
     border-radius: 5px;
-    text-decoration: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    transition: background 0.3s ease-in-out;
 }
 
-.telegram-button:hover {
-    background-color: #0077b5;
+.telegram-overlay a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
+
 
 
 

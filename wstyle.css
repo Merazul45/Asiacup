@@ -547,12 +547,6 @@ main .hero-wrapper .world-cup-standings table tbody tr td:nth-child(2) {
     font-weight: 600;
 }
 
-.iframe-container {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    max-width: 800px;
-}
 
 .telegram-button {
     position: absolute;

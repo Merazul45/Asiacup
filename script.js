@@ -1,18 +1,22 @@
+// GSAP ScrollTrigger প্লাগিন রেজিস্টার করা
+gsap.registerPlugin(ScrollTrigger);
+
 // Page Load Animation
 document.body.style.overflow = 'hidden';
 window.addEventListener('load', () => {
     setTimeout(() => {
         gsap.to('.loader-wrapper', {
             opacity: 0,
-            duration: 0.3
-        })
+            duration: 0.3,
+            onComplete: () => {
+                document.querySelector('.loader-wrapper').style.display = 'none';
+            }
+        });
         pageLoadAnimation();
-        gsap.to('.loader-wrapper', {
-            display: 'none'
-        })
         document.body.style.overflow = 'auto';
     }, 1000);
-})
+});
+
 function pageLoadAnimation() {
     let tl = gsap.timeline();
 
@@ -21,296 +25,94 @@ function pageLoadAnimation() {
         opacity: 0,
         duration: 0.5
     })
-    tl.from('.hero-wrapper', {
+    .from('.hero-wrapper', {
         y: '5%',
         opacity: 0,
         duration: 0.5
     }, 'p')
-    tl.from('.hero-right img', {
+    .from('.hero-right img', {
         scale: 1.2,
         duration: 0.5
-    }, 'p')
+    }, 'p');
 }
 
 // Menu Open and Close Functions
 let menuIcon = document.querySelector('.menu-icon');
-let menuIconI = document.querySelector('.menu-icon i');
 let menu = document.querySelector('.menu');
 
-function menuOpen() {
-    gsap.to(menu, {
-        height: 'auto',
-        duration: 0.3
-    })
-
-    menuIcon.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-
-    menu.classList.remove('menu-close');
-    menu.classList.add('menu-open');
-
-}
-
-function menuClose() {
-    gsap.to(menu, {
-        height: '0',
-        duration: 0.3
-    })
-
-    menuIcon.innerHTML = '<i class="fa-solid fa-bars"></i>';
-
-    menu.classList.remove('menu-open');
-    menu.classList.add('menu-close');
-}
-
 menuIcon.addEventListener('click', () => {
-    if (menu.classList.contains('menu-close')) {
-        menuOpen();
-    }
-    else {
-        menuClose();
-    }
+    let isOpen = menu.classList.contains('menu-open');
+
+    gsap.to(menu, {
+        height: isOpen ? '0' : 'auto',
+        duration: 0.3
+    });
+
+    menu.classList.toggle('menu-open');
+    menu.classList.toggle('menu-close');
+
+    menuIcon.classList.toggle('open');
 });
 
 // Margin for the Main container
 function mainMargin() {
     let mainSection = document.querySelector('main');
-    let navStyle = getComputedStyle(document.querySelector('nav'));
-    mainSection.style.marginTop = navStyle.getPropertyValue('height');
+    let nav = document.querySelector('nav');
+
+    if (nav && mainSection) {
+        mainSection.style.marginTop = getComputedStyle(nav).height;
+    }
 }
 
 mainMargin();
 window.addEventListener('resize', mainMargin);
 
-// Other Match Section Scroll Animation
-function otherMatchSectionScroll() {
-    gsap.from('.other-match-section-head h1', {
+// Common Scroll Animation Function
+function scrollAnimation(target, options = {}) {
+    gsap.from(target, {
         opacity: 0,
         duration: 0.5,
+        y: options.y || '0%',
+        scale: options.scale || 1,
+        stagger: options.stagger || 0,
         scrollTrigger: {
-            trigger: '.other-match-section-head h1',
+            trigger: target,
             scroller: 'body',
             start: 'top 60%',
-            end: 'top 60%'
+            end: 'bottom 50%',
+            toggleActions: 'play none none none'
         }
-    })
-    gsap.from('.other-match, .more-matches', {
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.other-match-section-head h1',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
+    });
 }
-otherMatchSectionScroll();
 
-// News Section Scroll Animation
-function newsSectionScroll() {
-    gsap.from('.news-section>h1', {
-        opacity: 0,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.news-section>h1',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.news-1', {
-        opacity: 0,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.news-1',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.news-2', {
-        opacity: 0,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.news-2',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.news-3', {
-        opacity: 0,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.news-3',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.news-4', {
-        opacity: 0,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.news-4',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.news-1 img', {
-        scale: 1.2,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.news-1 img',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.news-2 img', {
-        scale: 1.2,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.news-2 img',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.news-3 img', {
-        scale: 1.2,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.news-3 img',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.news-4 img', {
-        scale: 1.2,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.news-4 img',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.more-news-button', {
-        opacity: 0,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.more-news-button',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-}
-newsSectionScroll();
+// Apply Scroll Animations
+scrollAnimation('.other-match-section-head h1');
+scrollAnimation('.other-match, .more-matches', { stagger: 0.2 });
+scrollAnimation('.news-section>h1');
+scrollAnimation('.news-1, .news-2, .news-3, .news-4');
+scrollAnimation('.news-1 img, .news-2 img, .news-3 img, .news-4 img', { scale: 1.2 });
+scrollAnimation('.more-news-button');
+scrollAnimation('.player-award-card');
+scrollAnimation('.player-award-head h1, .player-award-head h2');
+scrollAnimation('.player-award-text h1, .player-award-text-2 h1', { y: '30%', stagger: 0.2 });
+scrollAnimation('.player-award-image img', { y: '30%' });
+scrollAnimation('.footer-wrapper');
 
-// Player of the year Scroll Animation
-function playrOfTheYearSectionScroll() {
-    gsap.from('.player-award-card', {
-        opacity: 0,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.player-award-card',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.player-award-head h1, .player-award-head h2', {
-        opacity: 0,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.player-award-head h1, .player-award-head h2',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.player-award-text h1', {
-        opacity: 0,
-        y: '30%',
-        stagger: 0.2,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.player-award-text h1',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.player-award-text-2 h1', {
-        opacity: 0,
-        y: '30%',
-        stagger: 0.2,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.player-award-text-2 h1',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-    gsap.from('.player-award-image img', {
-        opacity: 0,
-        y: '30%',
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.player-award-text h1',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-}
-playrOfTheYearSectionScroll();
-
-// scroll to section
-// Smooth scroll to standings (Rankings)
-document.querySelector('.other-match-section').addEventListener('click', function(e) {
-    e.preventDefault(); // Prevent default anchor behavior
-    const targetSection = document.querySelector('#standings'); // Section with id 'standings'
-    targetSection.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to 'standings'
+// Smooth Scroll Functions
+document.querySelector('.other-match-section')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector('#standings')?.scrollIntoView({ behavior: "smooth" });
 });
 
-// Smooth scroll to other matches section (BD-Matches)
-document.querySelector('.scroll-link').addEventListener('click', function(e) {
-    e.preventDefault(); // Prevent default anchor behavior
-    const targetSection = document.querySelector('#other-matches'); // Section with id 'other-matches'
-    targetSection.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to 'other-matches'
+document.querySelector('.scroll-link')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector('#other-matches')?.scrollIntoView({ behavior: "smooth" });
 });
 
-// player
+// Update iFrame Source
 function playChannelIframe(url) {
-    // Get the iframe element by its ID
     const iframe = document.getElementById('player');
-
-    // Update the iframe's src with the selected URL
-    iframe.src = url;
+    if (iframe) {
+        iframe.src = url;
+    }
 }
-
-
-
-
-
-// Footer Scroll Animation
-function footerScroll() {
-    gsap.from('.footer-wrapper', {
-        opacity: 0,
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.footer-wrapper',
-            scroller: 'body',
-            start: 'top 60%',
-            end: 'top 60%'
-        }
-    })
-}
-footerScroll();

@@ -549,11 +549,16 @@ main .hero-wrapper .world-cup-standings table tbody tr td:nth-child(2) {
 
 .telegram-overlay {
     position: absolute;
-    top: 10px;  /* প্লেয়ারের উপরের দিকে থাকবে */
-    right: 10px; /* ডান পাশে থাকবে */
-    background-color: rgba(0, 0, 0, 0.6); /* ব্যাকগ্রাউন্ড একটু ট্রান্সপারেন্ট */
-    padding: 10px;
-    border-radius: 5px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-color: #0088cc; /* Telegram Blue */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .telegram-overlay a {

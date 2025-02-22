@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stream</title>
+    <script src="https://cdn.jsdelivr.net/npm/video.js@7.10.2/dist/video.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/video.js@7.10.2/dist/video-js.css" rel="stylesheet">
+</head>
+<body>
+
+<video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360">
+    <source src="https://raw.githubusercontent.com/yourusername/yourrepository/main/live.m3u8" type="application/x-mpegURL">
+</video>
+
+<script>
+    var player = videojs('my-video');
+</script>
+
+</body>
+</html>

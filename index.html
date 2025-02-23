@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<meta content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" name="viewport">
+		<meta property="og:title" content="Denver Player">
+    <meta property="og:description" content="User Can Play Any Type of Links for Example -: MP4, MKV, hls, M3U8 or Play MPD & ClearKey.">
+    <meta property="og:image" content="https://i.postimg.cc/FzZxT1Dp/image.jpg">
+    <meta property="og:url" content="https://denver1769.in">
+    <meta property="og:type" content="website">
+    <title>Jw Player</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.postimg.cc/YC3Npf10/image.webp">
+    <link rel="stylesheet" href="Mpd2.css">
+</head>
+<body>
+    <h1>Jw Player</h1>
+
+    <label for="mediaLink">Media Link:</label>
+    <input type="text" id="mediaLink" placeholder="Enter M3u8/MPD Link">
+
+    <label for="clearKeyId">KeyId:</label>
+    <input type="text" id="clearKeyId" placeholder="Enter Keyid">
+
+    <label for="clearKey">Key:</label>
+    <input type="text" id="clearKey" placeholder="Enter Key">
+
+    <button onclick="playMedia()">Play</button>
+      
+    <script>
+    	// dont change codes Made by your Daddy -: Denver1769 //
+    function playMedia() {
+            const mediaLink = document.getElementById('mediaLink').value;
+            const clearKey = document.getElementById('clearKey').value;
+            const clearKeyId = document.getElementById('clearKeyId').value;
+
+            let redirectLink = 'Player.html?';
+    // Player.html path select here //
+            if (mediaLink.includes('.mpd')) {
+                redirectLink += `mpd=${mediaLink}&keyId=${clearKeyId}&key=${clearKey}`;
+            } else if (mediaLink.includes('.m3u8')) {
+                redirectLink += `m3u8=${mediaLink}`;
+            }
+
+            window.location.href = redirectLink;
+        }
+        // dont change codes Made by your Daddy -: Denver1769 //
+        </script>
+</body>
+        </html>

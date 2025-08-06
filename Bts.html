@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BTS কুইজ</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffe0ec, #e0f7fa);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      padding: 30px;
+      position: relative;
+    }
+    h1 {
+      text-align: center;
+      color: #7b1fa2;
+      font-size: 6vw;
+    }
+    .question-box {
+      margin-top: 30px;
+    }
+    .question {
+      font-size: 5vw;
+      margin-bottom: 20px;
+    }
+    .options {
+      list-style: none;
+      padding: 0;
+    }
+    .options li {
+      padding: 12px;
+      background: #f1f1f1;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 4.5vw;
+    }
+    .options li:hover {
+      background: #e0e0e0;
+    }
+    .correct {
+      background-color: #a5d6a7 !important;
+    }
+    .wrong {
+      background-color: #ef9a9a !important;
+    }
+    .disabled {
+      pointer-events: none;
+    }
+    .score-box {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 5vw;
+      font-weight: bold;
+      color: #4caf50;
+    }
+    .next-btn {
+      display: none;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #7b1fa2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 4vw;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .next-btn:hover {
+      background-color: #6a1b9a;
+    }
+    .congrats {
+      font-size: 7vw;
+      color: #7b1fa2;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 3.5vw;
+      color: #666;
+      margin-top: 40px;
+    }
+
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      animation: fall 4s linear infinite;
+      opacity: 0.8;
+      z-index: 9999;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (min-width: 600px) {
+      h1 { font-size: 32px; }
+      .question { font-size: 22px; }
+      .options li { font-size: 18px; }
+      .score-box { font-size: 22px; }
+      .next-btn { font-size: 18px; }
+      .congrats { font-size: 32px; }
+      .footer { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>💜BTS কুইজ💜</h1>
+    <div class="question-box" id="quiz-box"></div>
+    <div class="score-box" id="score-box"></div>
+    <div class="footer">👨‍💻 Developed by U'r An Vir</div>
+  </div>
+
+  <script>
+    const quizData = [
+      { question: "BTS-এর কোন সদস্য BigHit-এ সবচেয়ে আগে যোগ দেয়?", options: ["Jin", "J-Hope", "RM", "SUGA"], answer: "RM" },
+      { question: "“Agust D” কার স্টেজ নেম?", options: ["V", "RM", "SUGA", "Jungkook"], answer: "SUGA" },
+      { question: "BTS-এর কোন মেম্বার “Golden Maknae” নামে পরিচিত?", options: ["Jungkook", "Jimin", "Jin", "RM"], answer: "Jungkook" },
+      { question: "“4 O’CLOCK” গানটি কার লেখা এবং কাদের কণ্ঠে?", options: ["V ও J-Hope", "V ও RM", "Jimin ও RM", "SUGA ও V"], answer: "V ও RM" },
+      { question: "Jin-এর “Epiphany” গানটি কোন অ্যালবামে রয়েছে?", options: ["WINGS", "Love Yourself: Her", "Love Yourself: Tear", "Love Yourself"], answer: "Love Yourself: Answer" },
+      { question: "BTS-এর কোন মেম্বার নাচ শেখা শুরু করে নাচে ভালো না হয়েও?", options: ["J-Hope", "Jin", "RM", "SUGA"], answer: "Jin" },
+      { question: "J-Hope-এর সলো মিক্সটেপ “Hope World” কোন সালে প্রকাশ পায়?", options: ["২০১৯", "২০১৮", "২০১৭", "২০২০"], answer: "২০১৮" },
+      { question: "“WINGS” অ্যালবামের জন্য Suga যে শর্ট ফিল্মে ছিল তার নাম কী ছিল?", options: ["Reflection", "Stigma", "First Love", "Lie"], answer: "First Love" },
+      { question: "Jungkook কোন শহরে জন্মগ্রহণ করে?", options: ["Seoul", "Daegu", "Busan", "Incheon"], answer: "Busan" },
+      { question: "V-এর প্রথম রিলিজ করা সলো গান কোনটি?", options: ["Stigma", "Singularity", "Inner Child", "Scenery"], answer: "Stigma" },
+      { question: "BTS-এর অফিসিয়াল ফ্যান্ডম নাম “ARMY” এর পূর্ণরূপ কী?", options: ["A Royal Music Youth", "Army of K-pop", "Adorable Representative M.C. for Youth", "All Representatives Meet Youth"], answer: "Adorable Representative M.C. for Youth" },
+      { question: "BTS-এর প্রথম BillBoard Hot 100 No.1 গান কোনটি?", options: ["Boy With Luv", "Dynamite", "Butter", "DNA"], answer: "Dynamite" },
+      { question: "BTS “UN Speech” প্রথম কবে দেয় এবং কার নামেই তারা দেয়?", options: ["২০২০, UNICEF", "২০১৮, UNICEF", "২০১৭, UNDP", "২০১৯, WHO"], answer: "২০১৮, UNICEF" },
+      { question: "BTS-এর কোন মেম্বার “Hwarang” নামক K-drama-তে অভিনয় করেছে?", options: ["Jimin", "V", "Jin", "RM"], answer: "V" },
+      { question: "BTS-এর ডেবিউ দিন ও গান কী ছিল?", options: ["১৩ জুন ২০১৩, No More Dream", "১২ জুন ২০১৩, Fire", "১৩ জুলাই ২০১৩, Boy In Luv", "১৪ জুন ২০১৩, N.O"], answer: "১৩ জুন ২০১৩, No More Dream" },
+      { question: "BTS-এর কোন মেম্বার “Euphoria” গানটি গেয়েছেন এবং এটি কোন অ্যালবামে আছে?", options: ["Jimin, Love Yourself: Her", "Jungkook, Love Yourself: Answer", "V, Map of the Soul: 7", "SUGA, Be"], answer: "Jungkook, Love Yourself: Answer" },
+      { question: "“Daechwita” গানটি কোন মেম্বারের সলো কাজ এবং কোন নামে প্রকাশিত?", options: ["SUGA, Agust D", "J-Hope, Hobi", "RM, Rap Monster", "V, Taetae"], answer: "SUGA, Agust D" },
+      { question: "BTS-এর কোন মেম্বার “World Wide Handsome” টার্মটি ব্যবহার করেন?", options: ["Jungkook", "V", "Jin", "J-Hope"], answer: "Jin" },
+      { question: "BTS কোন অ্যালবামের জন্য গ্র্যামি নমিনেশন পায় প্রথমবার?", options: ["BE", "Dynamite", "Map of the Soul: 7", "Love Yourself: Tear"], answer: "Dynamite" },
+      { question: "BTS-এর “Map of the Soul” সিরিজ কোন জার্মান মনোবিজ্ঞানীর তত্ত্ব থেকে অনুপ্রাণিত?", options: ["Sigmund Freud", "Carl Jung", "Alfred Adler", "Erik Erikson"], answer: "Carl Jung" }
+    ];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    shuffle(quizData);
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const quizBox = document.getElementById('quiz-box');
+    const scoreBox = document.getElementById('score-box');
+
+    function loadQuestion() {
+      const qData = quizData[currentQuestion];
+      const shuffledOptions = [...qData.options];
+      shuffle(shuffledOptions);
+
+      quizBox.innerHTML = `
+        <div class="question">${currentQuestion + 1}. ${qData.question}</div>
+        <ul class="options">
+          ${shuffledOptions.map(opt => `<li>${opt}</li>`).join("")}
+        </ul>
+        <button class="next-btn">পরবর্তী প্রশ্ন</button>
+      `;
+
+      const options = quizBox.querySelectorAll('li');
+      const nextBtn = quizBox.querySelector('.next-btn');
+      nextBtn.style.display = "none";
+
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          options.forEach(opt => opt.classList.add('disabled'));
+          if (option.innerText === qData.answer) {
+            option.classList.add('correct');
+            score++;
+          } else {
+            option.classList.add('wrong');
+            options.forEach(opt => {
+              if (opt.innerText === qData.answer) opt.classList.add('correc..');
+            });
+          }
+          nextBtn.style.display = 'block';
+        });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentQuestion++;
+        if (currentQuestion < quizData.length) {
+          loadQuestion();
+        } else {
+          showScore();
+        }
+      });
+    }
+
+    function showScore() {
+      quizBox.innerHTML = "";
+      scoreBox.innerHTML = `
+        <div class="congrats">💜 অভিনন্দন! 💜</div>
+        ✅ আপনি ${quizData.length}টি প্রশ্নের মধ্যে ${score}টি সঠিক উত্তর দিয়েছেন!
+      `;
+      startPurpleHearts();
+    }
+
+    function startPurpleHearts() {
+      for (let i = 0; i < 80; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.textContent = '💜';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (Math.random() * 24 + 20) + 'px';
+        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>
